@@ -14,3 +14,6 @@ git commit -m "$commit_message"
 
 # Push the changes to the remote repository
 git push
+
+# check the status of the repository
+git status
