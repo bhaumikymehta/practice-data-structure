@@ -50,7 +50,7 @@ public class CopyListWithRandomPointer {
         System.out.println("null");
     }
 
-    class Node {
+    public static class Node {
         int val;
         Node next;
         Node random;
