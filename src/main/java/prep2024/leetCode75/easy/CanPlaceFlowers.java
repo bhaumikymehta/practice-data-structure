@@ -20,7 +20,7 @@ public class CanPlaceFlowers {
 
     public boolean canPlaceFlowers(int[] flowerbed, int n) {
         // first iterate over an array
-        // i f adjacent is 1 then move ahead
+        // if adjacent is 1 then move ahead
         // if not then decrease n and change value for that element to 1
         // check if at end n is zero or minus then return true
 

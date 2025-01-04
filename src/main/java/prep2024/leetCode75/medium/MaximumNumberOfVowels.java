@@ -7,7 +7,7 @@ import java.util.Set;
 public class MaximumNumberOfVowels {
     public int maxVowels(String s, int k) {
         // simple technique for sliding window
-        // first create a window till legth defined
+        // first create a window till length defined
         // then subtract previous and add last
         int max = 0;
         Set<Character> vowels = new HashSet<>(Arrays.asList(
