@@ -4,7 +4,7 @@
 random_number=$((RANDOM % 1000))
 
 # Construct the commit message
-commit_message="meta medium question $random_number"
+commit_message="leetcode 150 questions  $random_number"
 
 # Stage all changes
 git add .
