@@ -1,10 +1,8 @@
 package prep2024.meta.medium;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
-import java.util.List;
 
 // 1762. Buildings With an Ocean View
 public class BuildingWithOceanView {
@@ -19,7 +17,6 @@ public class BuildingWithOceanView {
             stack.push(i);
 
         }
-        List<Integer> result = new ArrayList<>();
         int[] reversedDeque = new int[stack.size()];
 
         for (int i = stack.size() - 1; i >= 0; i--) {

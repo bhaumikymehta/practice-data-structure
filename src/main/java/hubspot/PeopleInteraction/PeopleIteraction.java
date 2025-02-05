@@ -1,10 +1,12 @@
-package Interview.hubspot;
+package hubspot.PeopleInteraction;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -14,7 +16,43 @@ import java.util.Set;
 
 import com.google.gson.Gson;
 
-public class TestCode {
+class Association {
+    int companyId;
+    int contactId;
+    String role;
+
+    Association(int companyId, int contactId, String role) {
+        this.companyId = companyId;
+        this.contactId = contactId;
+        this.role = role;
+    }
+}
+
+class Result {
+    List<Association> validAssociations;
+    List<InvalidAssociation> invalidAssociations;
+
+    Result() {
+        this.validAssociations = new ArrayList<>();
+        this.invalidAssociations = new ArrayList<>();
+    }
+}
+
+class InvalidAssociation extends Association {
+    String failureReason;
+
+    InvalidAssociation(int companyId, int contactId, String role, String failureReason) {
+        super(companyId, contactId, role);
+        this.failureReason = failureReason;
+    }
+}
+
+class Dataset {
+    List<Association> existingAssociations;
+    List<Association> newAssociations;
+}
+
+public class PeopleIteraction {
 
     private static Result validateAssociations(List<Association> existingAssociations,
             List<Association> newAssociations) {
@@ -103,21 +141,22 @@ public class TestCode {
     public static void main(String[] args) {
         try {
 
+            Gson gson = new Gson();
+
             // Fetch the dataset
-            Dataset dataset = fetchDataset(DATASET_URL);
+            // Dataset dataset = fetchDataset(DATASET_URL);
             // String currentDirectory = System.getProperty("user.dir");
 
-            // String filePath =
-            // "/Users/bhaumikmehta/Documents/workspace/java/interviewPrerp/practice-data-structure/src/main/java/Interview/hubspot/response.json";
-            // String responseJson = new String(Files.readAllBytes(Paths.get(filePath)));
-            // Dataset dataset = gson.fromJson(responseJson.toString(), Dataset.class);
+            String filePath = "/Users/bhaumikmehta/Documents/workspace/java/interviewPrerp/practice-data-structure/src/main/java/hubspot/PeopleInteraction/response.json";
+            String responseJson = new String(Files.readAllBytes(Paths.get(filePath)));
+            Dataset dataset = gson.fromJson(responseJson.toString(), Dataset.class);
 
             // Validate the associations
             Result result = validateAssociations(dataset.existingAssociations, dataset.newAssociations);
 
             System.out.println("Result:" + result);
             // POST the results
-            postResult(RESULT_URL, result);
+            // postResult(RESULT_URL, result);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,40 +213,4 @@ public class TestCode {
         con.disconnect();
     }
 
-}
-
-class Association {
-    int companyId;
-    int contactId;
-    String role;
-
-    Association(int companyId, int contactId, String role) {
-        this.companyId = companyId;
-        this.contactId = contactId;
-        this.role = role;
-    }
-}
-
-class Result {
-    List<Association> validAssociations;
-    List<InvalidAssociation> invalidAssociations;
-
-    Result() {
-        this.validAssociations = new ArrayList<>();
-        this.invalidAssociations = new ArrayList<>();
-    }
-}
-
-class InvalidAssociation extends Association {
-    String failureReason;
-
-    InvalidAssociation(int companyId, int contactId, String role, String failureReason) {
-        super(companyId, contactId, role);
-        this.failureReason = failureReason;
-    }
-}
-
-class Dataset {
-    List<Association> existingAssociations;
-    List<Association> newAssociations;
 }
