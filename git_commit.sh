@@ -3,6 +3,9 @@
 # Generate a random number to append to the commit message
 random_number=$((RANDOM % 1000))
 
+#mvn clean install
+mvn clean install
+
 # Construct the commit message
 commit_message="leetcode 150 questions  $random_number"
 
