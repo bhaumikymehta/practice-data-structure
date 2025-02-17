@@ -1,4 +1,4 @@
-package easy;
+package datastructure.templates;
 
 
 // the most important part it to remember that mid is always going to be start + end-start/2

@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 /*
- * We have a search engine that spreads requests out to N handlers. Each handler returns a sorted list of results with consistent sorting rules used by each handler. Write an algorithm that merges all sorted lists into a single list.
+ * We have a search engine that spreads requests out to N handlers. Each handler returns a sorted list of
+ *  results with consistent sorting rules used by each handler. Write an algorithm that merges all sorted
+ * lists into a single list.
 > Ex. I/O: merge(iterators) -> ["A", "B", "C", "D"]
  */
 public class MergeIterator {

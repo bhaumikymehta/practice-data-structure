@@ -46,7 +46,6 @@ public class TopKfrequentWords {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World");
         String[] words = { "i", "love", "leetcode", "i", "love", "coding" };
         int k = 2;
         String[] result = topKFrequent(words, k);
